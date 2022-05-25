@@ -1,0 +1,54 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site1.master.vb" Inherits="Sakada.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="css/all.css" rel="stylesheet" />
+    <style>
+        body{
+            font-family: 'Open Sans', sans-serif;
+
+        }
+    </style>
+</head>
+<body class="w3-light-grey">
+    <form id="form1" runat="server">
+        <!-- Top Container -->
+        <div class="w3-container w3-top w3-large" style="z-index:3; position:relative; background-color:#002050; padding-top:2px; padding-bottom:2px;">
+            <asp:Table runat="server" Width="100%">
+                <asp:TableRow>
+                    <asp:TableCell HorizontalAlign="Left">
+                        <span class="w3-left w3-hide-small" style="color:white;">Sakada Monitoring System</span>
+                    </asp:TableCell>
+                    <asp:TableCell HorizontalAlign="Right">
+                        <asp:Label ID="lblUserLogin" runat="server" Text="0" ForeColor="White" />
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+        </div>
+        <div style="height:100%; width:100%;">
+            <div id="divSideNav" runat="server">
+                <nav class="w3-sidenav w3-white" style="z-index:4; width:205px; position:absolute;" id="sidenav" runat="server">
+                    <br />
+                    <div class="w3-container">
+                        <h5>Control Panel</h5>
+                    </div>
+                    <hr style="padding: 0px 0px 0px 0px; margin-top:0px; margin-bottom:10px;">
+                    <a id="sideNavCashAdvance" runat="server" href="CashAdvance.aspx" class="w3-padding"><i class="fa fa-file fa-align-justify"></i>&nbsp; Cash Advance</a>
+                    <a id="sideNavEmployee" runat="server" href="Employee.aspx" class="w3-padding"><i class="fa fa-user fa-align-justify"></i>&nbsp; Employee</a>
+                    <a id="sideNavSupervisor" runat="server" href="MillingSupervisor.aspx" class="w3-padding"><i class="fa fa-user-tie fa-align-justify"></i>&nbsp; Supervisor</a>
+                    <a id="sideNaveAcctMgt" runat="server" href="#" class="w3-padding"><i class="fa fa-user-cog fa-align-justify"></i>&nbsp; Account Management</a>
+                </nav>
+            </div>
+        </div>
+        <div style="margin-right: 10px; margin-left:210px;">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
