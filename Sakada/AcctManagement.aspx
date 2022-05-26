@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site1.Master" CodeBehind="CashAdvance.aspx.vb" Inherits="Sakada.CashAdvance" EnableEventValidation="false"%>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site1.Master" CodeBehind="AcctManagement.aspx.vb" Inherits="Sakada.AcctManagement" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/w3.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -41,28 +41,18 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:UpdatePanel ID="pnlShowLoader" runat="server">
-        <ContentTemplate>
-            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-            <%--<asp:UpdateProgress runat="server" AssociatedUpdatePanelID="pnlShowLoader">
-                    <ProgressTemplate>
-                        <div class="modalLoader">
-                            <div class="centerLoader" style="text-align: center;">
-                                <img alt="" src="../../../Images/wsi_logo.gif" /><br />
-                                <label style="font-size:20px;color:dodgerblue" >Loading please wait...</label>
-                            </div>
-                        </div>
-                    </ProgressTemplate>
-                </asp:UpdateProgress>--%>
-            <asp:Button runat="server" Text="Load" ID="btnLoad" style="display:none" ClientIDMode="Static" OnClick="btnLoad_Click"/>
-            <asp:Label ID="lblCashAdvanceID" runat="server" Text="0" style="display:none;" />
-            <asp:Label ID="lblSavingControl" runat="server" Text="0" style="display:none;" />
-            <div class="panel panel-default card" style="border-radius: 0px; background-color: white; margin-top:15px;">
+     <asp:UpdatePanel runat="server" ID="pnlShowLoader">
+         <ContentTemplate>
+             <asp:ScriptManager runat="server" ID="ScriptManager1"></asp:ScriptManager>
+             <asp:Button runat="server" Text="Load" ID="btnLoad" style="display:none" ClientIDMode="Static" OnClick="btnLoad_Click"/>
+             <asp:Label ID="lblEmployeeID" runat="server" Text="0" style="display:none;" />
+             <asp:Label ID="lblSavingControl" runat="server" Text="0" style="display:none;" />
+             <div class="panel panel-default card" style="border-radius: 0px; background-color: white; margin-top:15px;">
                 <div>
                     <table>
                         <tr>
                             <td>
-                                <asp:Button ID="myCashAdvance" runat="server" Style="border: 0px; background-color: #FFB973; color: #293955; font-size: 16px; height: 40px; width: 150px; font-weight: 600; text-align: center; vertical-align: middle;" Text="Cash Advance"></asp:Button>
+                                <asp:Button ID="myAcctMngt" runat="server" Style="border: 0px; background-color: #FFB973; color: #293955; font-size: 16px; height: 40px; width: 250px; font-weight: 600; text-align: center; vertical-align: middle;" Text="Account Management" />
                             </td>
                         </tr>
                     </table>
@@ -87,7 +77,7 @@
                                                 <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-default buttonStyle" />
                                             </td>
                                             <td>
-                                                <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-default buttonStyle" />
+                                                <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger buttonStyle w3-right-align" />
                                             </td>
                                         </tr>
                                     </table>
@@ -111,20 +101,18 @@
                     </div>
                     <hr style="margin: 0px 0px 0px 0px;" />
                     <div id="dvMain" runat="server" visible="false">
-                        <asp:GridView ID="gvCAMain" AlternatingRowStyle-BackColor="#efefef" RowStyle-Height="50px" RowStyle-VerticalAlign="Middle" BorderStyle="None" GridLines="Horizontal" AllowPaging="true" PageSize="10" CssClass="table table-hover" AutoGenerateColumns="false" runat="server" ShowHeaderWhenEmpty="True" EmptyDataText="No records Found" EmptyDataRowStyle-HorizontalAlign="Center">
+                        <asp:GridView ID="gvAcctMain" AlternatingRowStyle-BackColor="#efefef" RowStyle-Height="50px" RowStyle-VerticalAlign="Middle" BorderStyle="None" GridLines="Horizontal" AllowPaging="true" PageSize="10" CssClass="table table-hover" AutoGenerateColumns="false" runat="server" AutoPostBack="true" ShowHeaderWhenEmpty="True" EmptyDataText="No records Found" EmptyDataRowStyle-HorizontalAlign="Center">
                             <Columns>
-                                <%--0--%><asp:BoundField DataField="CAID" HeaderText="Cash Advance ID" />
-                                <%--0--%><asp:BoundField DataField="CAEmployee" HeaderText="Employee" />
-                                <%--1--%><asp:BoundField DataField="CASupervisor" HeaderText="Supervisor" />
-                                <%--2--%><asp:BoundField DataField="CAStatus" HeaderText="Status" />
-                                <%--3--%><asp:BoundField DataField="CADate" HeaderText="Date" />
-                                <%--4--%><asp:BoundField DataField="CAAmount" HeaderText="Amount" />
+                                <%--0--%><asp:BoundField DataField="LoginID" HeaderText="ID" />
+                                <%--1--%><asp:BoundField DataField="UserName" HeaderText="Name" />
+                                <%--2--%><asp:BoundField DataField="LoginName" HeaderText="Login Name" />
+                                <%--3--%><asp:BoundField DataField="AccessLevel" HeaderText="Access Level" />
                             </Columns>
 
                             <HeaderStyle BorderColor="#0099FF" BorderStyle="None" />
                         </asp:GridView>
                     </div>
-                    <div id="dvNewCA" runat="server" visible="false">
+                    <div id="dvNewCA" runat="server" visible="true">
                         <asp:Table runat="server" Width="100%" CellPadding="0" CellSpacing="0">
                             <asp:TableRow>
                                 <asp:TableCell Width="70%" CssClass="borderRightOfTable" VerticalAlign="Top">
@@ -151,10 +139,12 @@
                                                         <asp:UpdatePanel runat="server" ID="pnlUpdateEmp" UpdateMode="Conditional">
                                                         <ContentTemplate>
                                                             <div>
-                                                                <label class="labelStyle">Employee&nbsp;</label>
+                                                                <label class="labelStyle">Access Level&nbsp;</label>
                                                             </div>
                                                             <div>
-                                                                <asp:DropDownList BackColor="White" ID="ddEmployee" Width="100%" CssClass="form-control textBoxBorderRadius" runat="server" AutoPostBack="true">
+                                                                <asp:DropDownList BackColor="White" ID="ddAccessLevel" Width="100%" CssClass="form-control textBoxBorderRadius" runat="server" AutoPostBack="true">
+                                                                    <asp:ListItem>--Select--</asp:ListItem>
+                                                                    <asp:ListItem>Supervisor</asp:ListItem>
                                                                 </asp:DropDownList>
                                                             </div>
                                                         </ContentTemplate>
@@ -166,26 +156,36 @@
                                                 <asp:TableRow>
                                                     <asp:TableCell CssClass="paddingRow" Width="50%" RowSpan="3">
                                                         <div>
-                                                            <label class="labelStyle">Date of Cash Advance&nbsp;</label>
+                                                            <label class="labelStyle">Login Name&nbsp;</label>
                                                         </div>
                                                         <div>
-                                                            <asp:TextBox Visible="false" BackColor="White" Width="100%" ID="txtReadBirthDate" CssClass="form-control textBoxBorderRadius" runat="server" />
-                                                            <div id="gvBirthDate" runat="server">
-                                                                <div class="input-group date" id="grpDate" style="width: 100%">
-                                                                    <asp:TextBox BackColor="White" ID="txtCADate" ClientIDMode="Static" Width="100%" Style="padding-left:8px;" CssClass="form-control textBoxBorderRadius" runat="server"/>
-                                                                    <span class="input-group-addon" style="border-radius: 0px">
-                                                                        <span class="glyphicon glyphicon-calendar" style="background-color: transparent;" />
-                                                                    </span>
-                                                                </div>
-                                                            </div>
+                                                            <asp:TextBox BackColor="White" Width="100%" ID="txtLoginName" CssClass="form-control textBoxBorderRadius" runat="server" />
                                                         </div>
                                                     </asp:TableCell>
                                                     <asp:TableCell CssClass="paddingRow" Width="50%" RowSpan="3">
                                                         <div>
-                                                            <label class="labelStyle">Amount&nbsp;</label>
+                                                            <label class="labelStyle">Password&nbsp;</label>
                                                         </div>
                                                         <div>
-                                                            <asp:TextBox BackColor="White" Width="100%" ID="txtAmount" CssClass="form-control textBoxBorderRadius" runat="server" />
+                                                            <asp:TextBox BackColor="White" Width="100%" ID="txtPassword" CssClass="form-control textBoxBorderRadius" runat="server" TextMode="Password" />
+                                                        </div>
+                                                    </asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="paddingRow" Width="50%" RowSpan="3">
+                                                        <div>
+                                                            <label class="labelStyle">Email Address&nbsp;</label>
+                                                        </div>
+                                                        <div>
+                                                            <asp:TextBox BackColor="White" Width="100%" ID="TextBox1" CssClass="form-control textBoxBorderRadius" runat="server" />
+                                                        </div>
+                                                    </asp:TableCell>
+                                                    <asp:TableCell CssClass="paddingRow" Width="50%" RowSpan="3">
+                                                        <div>
+                                                            <label class="labelStyle">Confirm Password&nbsp;</label>
+                                                        </div>
+                                                        <div>
+                                                            <asp:TextBox BackColor="White" Width="100%" ID="TextBox2" CssClass="form-control textBoxBorderRadius" runat="server" TextMode="Password" />
                                                         </div>
                                                     </asp:TableCell>
                                                 </asp:TableRow>
@@ -203,19 +203,7 @@
                     </div>
                     &nbsp;
                 </div>
-            </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
-    <script>
-        function pageLoad(sender, args) {
-            $(function() {
-                $("#grpDate").datepicker({
-                    autoclose: true,
-                    todayBtn: "linked",
-                    todayHighlight: true,
-                    orientation: "top"
-                });
-            });
-        }
-    </script>
+             </div>
+         </ContentTemplate>
+     </asp:UpdatePanel>
 </asp:Content>

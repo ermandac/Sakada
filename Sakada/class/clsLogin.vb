@@ -2,6 +2,18 @@
     Private strUserName As String
     Private strLoginName As String
     Private strPassWord As String
+    Private strAccessLevel As String
+    Private strLoginID As String
+
+    Public Property LoginID As String
+        Get
+            Return strLoginID
+        End Get
+        Set(value As String)
+            strLoginID = value
+        End Set
+    End Property
+
     Public Property UserName As String
         Get
             Return strUserName
@@ -10,6 +22,7 @@
             strUserName = value
         End Set
     End Property
+
     Public Property LoginName As String
         Get
             Return strLoginName
@@ -25,6 +38,15 @@
         End Get
         Set(value As String)
             strPassWord = value
+        End Set
+    End Property
+
+    Public Property AccessLevel As String
+        Get
+            Return strAccessLevel
+        End Get
+        Set(value As String)
+            strAccessLevel = value
         End Set
     End Property
 
@@ -65,5 +87,32 @@
             SakadaCloseNewConnection()
         End Try
         Return valName
+    End Function
+
+    Public Function GetLoginDB() As List(Of clsLogin)
+        Dim sQuery As New StringBuilder
+
+        sQuery.Append("SELECT * FROM tblLogin")
+
+        Dim lData As New List(Of clsLogin)
+
+        Try
+            Dim oReader = SakadaExecReader(sQuery.ToString())
+
+            While oReader.Read()
+                Dim obj As New clsLogin
+                obj.LoginID = HttpContext.Current.Server.HtmlEncode(oReader("id").ToString()).Replace("&#160;", "")
+                obj.UserName = HttpContext.Current.Server.HtmlEncode(oReader("username").ToString()).Replace("&#160;", "")
+                obj.LoginName = HttpContext.Current.Server.HtmlEncode(oReader("user_login").ToString()).Replace("&#160;", "")
+                obj.PassWord = HttpContext.Current.Server.HtmlEncode(oReader("user_pass").ToString()).Replace("&#160;", "")
+                obj.AccessLevel = HttpContext.Current.Server.HtmlEncode(oReader("access_level").ToString()).Replace("&#160;", "")
+                lData.Add(obj)
+            End While
+        Catch ex As Exception
+            System.Diagnostics.Trace.WriteLine(ex.Message & " -GetLoginDB")
+        Finally
+            SakadaCloseNewConnection()
+        End Try
+        Return lData
     End Function
 End Class

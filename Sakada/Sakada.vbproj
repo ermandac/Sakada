@@ -92,6 +92,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AcctManagement.aspx" />
     <Content Include="img\bg.jpeg" />
     <Content Include="Employee.aspx" />
     <Content Include="CashAdvance.aspx" />
@@ -102,6 +103,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcctManagement.aspx.designer.vb">
+      <DependentUpon>AcctManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AcctManagement.aspx.vb">
+      <DependentUpon>AcctManagement.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="class\clsConnectCA.vb" />
     <Compile Include="class\clsConnectSup.vb" />
     <Compile Include="class\clsLogin.vb" />

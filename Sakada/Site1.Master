@@ -41,7 +41,7 @@
                     <a id="sideNavCashAdvance" runat="server" href="CashAdvance.aspx" class="w3-padding"><i class="fa fa-file fa-align-justify"></i>&nbsp; Cash Advance</a>
                     <a id="sideNavEmployee" runat="server" href="Employee.aspx" class="w3-padding"><i class="fa fa-user fa-align-justify"></i>&nbsp; Employee</a>
                     <a id="sideNavSupervisor" runat="server" href="MillingSupervisor.aspx" class="w3-padding"><i class="fa fa-user-tie fa-align-justify"></i>&nbsp; Supervisor</a>
-                    <a id="sideNaveAcctMgt" runat="server" href="#" class="w3-padding"><i class="fa fa-user-cog fa-align-justify"></i>&nbsp; Account Management</a>
+                    <a id="sideNaveAcctMgt" runat="server" href="AcctManagement.aspx" class="w3-padding"><i class="fa fa-user-cog fa-align-justify"></i>&nbsp; Account Management</a>
                 </nav>
             </div>
         </div>

@@ -111,7 +111,7 @@
                     </div>
                     <hr style="margin: 0px 0px 0px 0px;" />
                     <div id="dvMain" runat="server" visible="false">
-                        <asp:GridView ID="gvEmpMain" AlternatingRowStyle-BackColor="#efefef" RowStyle-Height="50px" RowStyle-VerticalAlign="Middle" BorderStyle="None" GridLines="Horizontal" AllowPaging="true" PageSize="10" CssClass="table table-hover" AutoGenerateColumns="false" runat="server" AutoPostBack="true">
+                        <asp:GridView ID="gvEmpMain" AlternatingRowStyle-BackColor="#efefef" RowStyle-Height="50px" RowStyle-VerticalAlign="Middle" BorderStyle="None" GridLines="Horizontal" AllowPaging="true" PageSize="10" CssClass="table table-hover" AutoGenerateColumns="false" runat="server" AutoPostBack="true" ShowHeaderWhenEmpty="True" EmptyDataText="No records Found" EmptyDataRowStyle-HorizontalAlign="Center">
                             <Columns>
                                 <%--0--%><asp:BoundField DataField="EmpID" HeaderText="Employee ID" />
                                 <%--1--%><asp:BoundField DataField="FullName" HeaderText="Full Name" />

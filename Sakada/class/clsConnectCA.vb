@@ -72,8 +72,10 @@
     Public Function GetCADB() As List(Of clsConnectCA)
         Dim sQuery As New StringBuilder
 
-        sQuery.Append("SELECT * FROM tblCashAdvance")
-
+        sQuery.Append("SELECT caID, CONCAT(B.supFirstName,' ',B.supMiddleName,' ',B.supLastName) AS caSupervisor, ")
+        sQuery.Append("CONCAT(C.empFirstName,' ',C.empMiddleName,' ',C.empLastName) AS caEmployee, caDate, caStatus, caAmount, A.empID ")
+        sQuery.Append("FROM tblCashAdvance A INNER JOIN tblSupervisor B ON A.caSupervisor = B.ID ")
+        sQuery.Append("INNER JOIN tblEmployee C ON A.caEmployee = C.ID WHERE A.isDeleted <> 1")
         Dim lData As New List(Of clsConnectCA)
         Try
             Dim oReader = SakadaExecReader(sQuery.ToString())

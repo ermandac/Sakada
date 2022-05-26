@@ -132,7 +132,7 @@
         Dim oConnection = SakadaCallConnection()
         Dim resultVal As Boolean = False
         Dim sQuery As New StringBuilder
-        sQuery.Append("INSERT INTO tblSupervisor VALUES (@FirstName,@MiddleName,@LastName,@Address,@MobileNo,@EmailAddress,@Birthday,@Age)")
+        sQuery.Append("INSERT INTO tblSupervisor (supFirstName,supMiddleName,supLastName,supAddress,supMobileNo,supEmailAddress,supBirthday,supAge) VALUES (@FirstName,@MiddleName,@LastName,@Address,@MobileNo,@EmailAddress,@Birthday,@Age)")
         Try
             Using (oConnection)
                 Dim oCommand = SakadaCallCommand()
