@@ -52,7 +52,7 @@
 
     Public Function GetLogin(Username As String, Userpass As String) As List(Of clsLogin)
         Dim sQuery As New StringBuilder
-        sQuery.Append("SELECT * FROM tblLogin WHERE user_login = '" + Username + "' AND user_pass = '" + Userpass + "'")
+        sQuery.Append("SELECT username,user_login,user_pass,access_level FROM tblLogin WHERE user_login = '" + Username + "' AND user_pass = '" + Userpass + "'")
         Dim lData As New List(Of clsLogin)
 
         Try
@@ -62,6 +62,7 @@
                 obj.UserName = oReader("username").ToString()
                 obj.LoginName = oReader("user_login").ToString()
                 obj.PassWord = oReader("user_pass").ToString()
+                obj.AccessLevel = oReader("access_level").ToString()
                 lData.Add(obj)
             End While
         Catch ex As Exception
@@ -72,14 +73,31 @@
         Return lData
     End Function
 
-    Public Function GetUser(Session As String)
+    Public Function GetUser(UserLogin As String)
         Dim sQuery As New StringBuilder
-        sQuery.Append("SELECT username FROM tblLogin WHERE user_login = '" + Session + "'")
+        sQuery.Append("SELECT username FROM tblLogin WHERE user_login = '" + UserLogin + "'")
         Dim valName As String = ""
         Try
             Dim oReader = SakadaExecReader(sQuery.ToString())
             While oReader.Read()
                 valName = oReader("username").ToString()
+            End While
+        Catch ex As Exception
+            System.Diagnostics.Trace.WriteLine(ex.Message & " -GetUser")
+        Finally
+            SakadaCloseNewConnection()
+        End Try
+        Return valName
+    End Function
+
+    Public Function GetAccessLevel(UserLogin As String)
+        Dim sQuery As New StringBuilder
+        sQuery.Append("SELECT access_level FROM tblLogin WHERE user_login = '" + UserLogin + "'")
+        Dim valName As String = ""
+        Try
+            Dim oReader = SakadaExecReader(sQuery.ToString())
+            While oReader.Read()
+                valName = oReader("access_level").ToString()
             End While
         Catch ex As Exception
             System.Diagnostics.Trace.WriteLine(ex.Message & " -GetUser")

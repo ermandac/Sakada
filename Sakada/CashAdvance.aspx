@@ -89,6 +89,12 @@
                                             <td>
                                                 <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-default buttonStyle" />
                                             </td>
+                                            <td>
+                                                <asp:Button ID="btnApprove" runat="server" Text="Approve" CssClass="btn btn-success buttonStyle" />
+                                            </td>
+                                            <td>
+                                                <asp:Button ID="btnDisapprove" runat="server" Text="Disapprove" CssClass="btn btn-danger buttonStyle" />
+                                            </td>
                                         </tr>
                                     </table>
                                 </asp:TableCell>
@@ -114,11 +120,11 @@
                         <asp:GridView ID="gvCAMain" AlternatingRowStyle-BackColor="#efefef" RowStyle-Height="50px" RowStyle-VerticalAlign="Middle" BorderStyle="None" GridLines="Horizontal" AllowPaging="true" PageSize="10" CssClass="table table-hover" AutoGenerateColumns="false" runat="server" ShowHeaderWhenEmpty="True" EmptyDataText="No records Found" EmptyDataRowStyle-HorizontalAlign="Center">
                             <Columns>
                                 <%--0--%><asp:BoundField DataField="CAID" HeaderText="Cash Advance ID" />
-                                <%--0--%><asp:BoundField DataField="CAEmployee" HeaderText="Employee" />
-                                <%--1--%><asp:BoundField DataField="CASupervisor" HeaderText="Supervisor" />
-                                <%--2--%><asp:BoundField DataField="CAStatus" HeaderText="Status" />
-                                <%--3--%><asp:BoundField DataField="CADate" HeaderText="Date" />
-                                <%--4--%><asp:BoundField DataField="CAAmount" HeaderText="Amount" />
+                                <%--1--%><asp:BoundField DataField="CAEmployee" HeaderText="Employee" />
+                                <%--2--%><asp:BoundField DataField="CASupervisor" HeaderText="Supervisor" />
+                                <%--3--%><asp:BoundField DataField="CAStatus" HeaderText="Status" />
+                                <%--4--%><asp:BoundField DataField="CADate" HeaderText="Date" />
+                                <%--5--%><asp:BoundField DataField="CAAmount" HeaderText="Amount" />
                             </Columns>
 
                             <HeaderStyle BorderColor="#0099FF" BorderStyle="None" />
@@ -133,8 +139,6 @@
                                             <asp:Table runat="server" CellPadding="0" CellSpacing="0" Width="100%">
                                                 <asp:TableRow>
                                                     <asp:TableCell CssClass="paddingRow" Width="50%" RowSpan="2">
-                                                        <asp:UpdatePanel runat="server" ID="pnlUpdateSup" UpdateMode="Conditional">
-                                                        <ContentTemplate>
                                                             <div>
                                                                 <label class="labelStyle">Milling Supervisor&nbsp;</label>
                                                             </div>
@@ -142,8 +146,6 @@
                                                                 <asp:DropDownList BackColor="White" ID="ddSupervisor" Width="100%" CssClass="form-control textBoxBorderRadius" runat="server" AutoPostBack="true">
                                                                 </asp:DropDownList>
                                                             </div>
-                                                        </ContentTemplate>
-                                                    </asp:UpdatePanel>
                                                     </asp:TableCell>
                                                 </asp:TableRow>
                                                 <asp:TableRow>
@@ -186,6 +188,18 @@
                                                         </div>
                                                         <div>
                                                             <asp:TextBox BackColor="White" Width="100%" ID="txtAmount" CssClass="form-control textBoxBorderRadius" runat="server" />
+                                                        </div>
+                                                    </asp:TableCell>
+                                                </asp:TableRow>
+                                            </asp:Table>
+                                            <asp:Table runat="server" ID="tblStatus" CellPadding="0" CellSpacing="0" Width="50%">
+                                                <asp:TableRow>
+                                                    <asp:TableCell CssClass="paddingRow" Width="50%">
+                                                        <div>
+                                                            <label class="labelStyle">Status&nbsp;</label>
+                                                        </div>
+                                                        <div>
+                                                            <asp:TextBox BackColor="White" Width="100%" ID="txtStatus" CssClass="form-control textBoxBorderRadius" runat="server" />
                                                         </div>
                                                     </asp:TableCell>
                                                 </asp:TableRow>

@@ -262,6 +262,24 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:Sakada.AcctManagement._txtEmail">
+<summary>
+txtEmail control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Sakada.AcctManagement._txtConfirmPass">
+<summary>
+txtConfirmPass control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:Sakada.Employee._pnlShowLoader">
 <summary>
 pnlShowLoader control.
@@ -685,6 +703,24 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:Sakada.CashAdvance._btnApprove">
+<summary>
+btnApprove control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Sakada.CashAdvance._btnDisapprove">
+<summary>
+btnDisapprove control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:Sakada.CashAdvance._tblSearch">
 <summary>
 tblSearch control.
@@ -742,15 +778,6 @@ To modify move field declaration from designer file to code-behind file.
 <member name="F:Sakada.CashAdvance._dvCAContent">
 <summary>
 dvCAContent control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Sakada.CashAdvance._pnlUpdateSup">
-<summary>
-pnlUpdateSup control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -820,6 +847,24 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:Sakada.CashAdvance._tblStatus">
+<summary>
+tblStatus control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Sakada.CashAdvance._txtStatus">
+<summary>
+txtStatus control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:Sakada.Login._form1">
 <summary>
 form1 control.
@@ -832,6 +877,15 @@ To modify move field declaration from designer file to code-behind file.
 <member name="F:Sakada.Login._lblUserName">
 <summary>
 lblUserName control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Sakada.Login._lblAccessLevel">
+<summary>
+lblAccessLevel control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -1165,6 +1219,15 @@ To modify move field declaration from designer file to code-behind file.
 <member name="F:Sakada.Site1._lblUserLogin">
 <summary>
 lblUserLogin control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Sakada.Site1._btnLogout">
+<summary>
+btnLogout control.
 </summary>
 <remarks>
 Auto-generated field.

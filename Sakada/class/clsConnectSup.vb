@@ -99,7 +99,7 @@
     Public Function GetSupDB() As List(Of clsConnectSup)
         Dim sQuery As New StringBuilder
 
-        sQuery.Append("SELECT * FROM tblSupervisor WHERE isDeleted <> 1")
+        sQuery.Append("SELECT * FROM tblSupervisor WHERE supID LIKE '%%' AND isDeleted <> 1")
 
         Dim lData As New List(Of clsConnectSup)
 
@@ -189,7 +189,7 @@
 
     Public Function GetSupervisor() As List(Of clsConnectSup)
         Dim sQuery As New StringBuilder
-        sQuery.Append("SELECT ID,supFirstName,supMiddleName,supLastName FROM tblSupervisor ")
+        sQuery.Append("SELECT ID,supFirstName,supMiddleName,supLastName FROM tblSupervisor WHERE isDeleted <> 1 ")
         Dim lData As New List(Of clsConnectSup)
 
         Try

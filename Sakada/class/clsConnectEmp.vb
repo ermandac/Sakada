@@ -1,4 +1,5 @@
 ﻿Public Class clsConnectEmp
+    Private strID As String
     Private strEmpID As String
     Private strFullName As String
     Private strFirstName As String
@@ -10,7 +11,14 @@
     Private strMobileNo As String
     Private strEmailAdd As String
     Private strSupervisor As String
-
+    Public Property ID As String
+        Get
+            Return strID
+        End Get
+        Set(value As String)
+            strID = value
+        End Set
+    End Property
 
     Public Property EmpID As String
         Get
@@ -221,14 +229,15 @@
 
     Public Function GetEmployeeBySupName(SupName As String) As List(Of clsConnectEmp)
         Dim sQuery As New StringBuilder
-        sQuery.Append("SELECT ID,empFirstName,empMiddleName,empLastName FROM tblEmployee WHERE empSupervisor = '" + SupName + "' AND isDeleted = 0")
+        sQuery.Append("SELECT ID,empID,empFirstName,empMiddleName,empLastName FROM tblEmployee WHERE empSupervisor = '" + SupName + "' AND isDeleted = 0")
         Dim lData As New List(Of clsConnectEmp)
 
         Try
             Dim oReader = SakadaExecReader(sQuery.ToString())
             While oReader.Read()
                 Dim obj As New clsConnectEmp
-                obj.EmpID = oReader("ID").ToString()
+                obj.ID = oReader("ID").ToString()
+                obj.EmpID = oReader("empID").ToString()
                 obj.FirstName = oReader("empFirstName").ToString()
                 obj.MiddleName = oReader("empMiddleName").ToString()
                 obj.LastName = oReader("empLastName").ToString()

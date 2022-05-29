@@ -122,6 +122,24 @@ Partial Public Class CashAdvance
     Protected WithEvents btnDelete As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''btnApprove control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnApprove As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''btnDisapprove control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnDisapprove As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
     '''tblSearch control.
     '''</summary>
     '''<remarks>
@@ -185,15 +203,6 @@ Partial Public Class CashAdvance
     Protected WithEvents dvCAContent As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''pnlUpdateSup control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents pnlUpdateSup As Global.System.Web.UI.UpdatePanel
-    
-    '''<summary>
     '''ddSupervisor control.
     '''</summary>
     '''<remarks>
@@ -255,4 +264,22 @@ Partial Public Class CashAdvance
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtAmount As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''tblStatus control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents tblStatus As Global.System.Web.UI.WebControls.Table
+    
+    '''<summary>
+    '''txtStatus control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtStatus As Global.System.Web.UI.WebControls.TextBox
 End Class

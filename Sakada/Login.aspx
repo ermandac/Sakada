@@ -66,6 +66,7 @@
         <div class="w3-col s4">
             &nbsp;
             <asp:Label ID="lblUserName" runat="server" Text="0" style="display:none;" />
+            <asp:Label ID="lblAccessLevel" runat="server" Text="0" style="display:none;" />
         </div>
         <div class="w3-col s4 w3-card w3-white text-center w3-round-small w3-animate-zoom">
             <div class="w3-col s12 w3-border w3-text-white w3-center" style="height:50px;background-color:#002050;">

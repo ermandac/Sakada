@@ -17,12 +17,14 @@ Public Class Login
         Dim obj As New clsLogin
         Dim lData = obj.GetLogin(txtUserName.Text, txtPassword.Text)
         lblUserName.Text = obj.GetUser(txtUserName.Text)
+        lblAccessLevel.Text = obj.GetAccessLevel(txtUserName.Text)
         Session.RemoveAll()
         Session.Clear()
         If lData.Count > 0 Then
             pnlWarningMessage.Visible = False
             Session.Add("userLogin", txtUserName.Text)
             Session.Add("userName", lblUserName.Text)
+            Session.Add("accessLevel", lblAccessLevel.Text)
             Response.Redirect("CashAdvance.aspx")
         Else
             pnlWarningMessage.Visible = True

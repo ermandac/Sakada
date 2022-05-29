@@ -102,7 +102,8 @@
     Public Function GetCAHistory(EmpID As String) As List(Of clsConnectCA)
         Dim sQuery As New StringBuilder
 
-        sQuery.Append("SELECT * FROM tblCashAdvance WHERE empID = '" + EmpID + "'")
+        sQuery.Append("SELECT CONCAT(B.supFirstName,' ',B.supMiddleName,' ',B.supLastName) AS caSupervisor,caStatus,caDate,caAmount FROM tblCashAdvance A ")
+        sQuery.Append("INNER JOIN tblSupervisor B ON A.caSupervisor = B.ID INNER JOIN tblEmployee C ON A.caEmployee = B.ID WHERE A.isDeleted <> 1 AND C.empID = '" + EmpID + "'")
 
         Dim lData As New List(Of clsConnectCA)
         Try
@@ -149,7 +150,83 @@
         Return resultVal
     End Function
 
-    Public Function UpdateCADetails(obj As clsConnectCA)
+    Public Function UpdateCADetails(caID As String, obj As clsConnectCA)
+        Dim sQuery As New StringBuilder
+        sQuery.Append("UPDATE tblCashAdvance SET caSupervisor = @Supervisor, caEmployee = @Employee, caDate = @Date, caAmount = @Amount WHERE caID = '" + caID + "'")
+        Dim boolReturnVal As Boolean = False
+        Dim oConnection = SakadaCallConnection()
+        Try
+            oConnection.Open()
+            Dim oCommand = SakadaCallCommand()
+            oCommand = New SqlClient.SqlCommand(sQuery.ToString(), oConnection)
+            oCommand.Parameters.AddWithValue("@Supervisor", obj.CASupervisor)
+            oCommand.Parameters.AddWithValue("@Employee", obj.CAEmployee)
+            oCommand.Parameters.AddWithValue("@Date", obj.CADate)
+            oCommand.Parameters.AddWithValue("@Amount", obj.CAAmount)
+            oCommand.ExecuteNonQuery()
+            boolReturnVal = True
+        Catch ex As Exception
+            System.Diagnostics.Trace.WriteLine(ex.Message & " -UpdateCADetails")
+        Finally
+            oConnection.Close()
+        End Try
+        Return boolReturnVal
+    End Function
 
+    Public Function SetStatusApprove(caID As String)
+        Dim sQuery As New StringBuilder
+        sQuery.Append("UPDATE tblCashAdvance SET caStatus = 'Approve' WHERE caID = '" + caID + "'")
+        Dim boolReturnVal As Boolean = False
+        Dim oConnection = SakadaCallConnection()
+        Try
+            oConnection.Open()
+            Dim oCommand = SakadaCallCommand()
+            oCommand = New SqlClient.SqlCommand(sQuery.ToString(), oConnection)
+            oCommand.ExecuteNonQuery()
+            boolReturnVal = True
+        Catch ex As Exception
+            System.Diagnostics.Trace.WriteLine(ex.Message & " -SetStatusApprove")
+        Finally
+            oConnection.Close()
+        End Try
+        Return boolReturnVal
+    End Function
+
+    Public Function SetStatusDisapprove(caID As String)
+        Dim sQuery As New StringBuilder
+        sQuery.Append("UPDATE tblCashAdvance SET caStatus = 'Disapprove' WHERE caID = '" + caID + "'")
+        Dim boolReturnVal As Boolean = False
+        Dim oConnection = SakadaCallConnection()
+        Try
+            oConnection.Open()
+            Dim oCommand = SakadaCallCommand()
+            oCommand = New SqlClient.SqlCommand(sQuery.ToString(), oConnection)
+            oCommand.ExecuteNonQuery()
+            boolReturnVal = True
+        Catch ex As Exception
+            System.Diagnostics.Trace.WriteLine(ex.Message & " -SetStatusApprove")
+        Finally
+            oConnection.Close()
+        End Try
+        Return boolReturnVal
+    End Function
+
+    Public Function DeleteCARecord(caID As String)
+        Dim sQuery As New StringBuilder
+        sQuery.Append("UPDATE tblCashAdvance SET isDeleted = 1 WHERE caID = '" + caID + "'")
+        Dim boolReturnVal As Boolean = False
+        Dim oConnection = SakadaCallConnection()
+        Try
+            oConnection.Open()
+            Dim oCommand = SakadaCallCommand()
+            oCommand = New SqlClient.SqlCommand(sQuery.ToString(), oConnection)
+            oCommand.ExecuteNonQuery()
+            boolReturnVal = True
+        Catch ex As Exception
+            System.Diagnostics.Trace.WriteLine(ex.Message & " -DeleteCARecord")
+        Finally
+            oConnection.Close()
+        End Try
+        Return boolReturnVal
     End Function
 End Class

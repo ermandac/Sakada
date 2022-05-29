@@ -41,6 +41,15 @@ Partial Public Class Site1
     Protected WithEvents lblUserLogin As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
+    '''btnLogout control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnLogout As Global.System.Web.UI.WebControls.LinkButton
+    
+    '''<summary>
     '''divSideNav control.
     '''</summary>
     '''<remarks>

@@ -171,13 +171,15 @@
                                                         </div>
                                                     </asp:TableCell>
                                                 </asp:TableRow>
+                                            </asp:Table>
+                                            <asp:Table runat="server" CellPadding="0" CellSpacing="0" Width="100%">
                                                 <asp:TableRow>
                                                     <asp:TableCell CssClass="paddingRow" Width="50%" RowSpan="3">
                                                         <div>
                                                             <label class="labelStyle">Email Address&nbsp;</label>
                                                         </div>
                                                         <div>
-                                                            <asp:TextBox BackColor="White" Width="100%" ID="TextBox1" CssClass="form-control textBoxBorderRadius" runat="server" />
+                                                            <asp:TextBox BackColor="White" Width="100%" ID="txtEmail" CssClass="form-control textBoxBorderRadius" runat="server" />
                                                         </div>
                                                     </asp:TableCell>
                                                     <asp:TableCell CssClass="paddingRow" Width="50%" RowSpan="3">
@@ -185,7 +187,7 @@
                                                             <label class="labelStyle">Confirm Password&nbsp;</label>
                                                         </div>
                                                         <div>
-                                                            <asp:TextBox BackColor="White" Width="100%" ID="TextBox2" CssClass="form-control textBoxBorderRadius" runat="server" TextMode="Password" />
+                                                            <asp:TextBox BackColor="White" Width="100%" ID="txtConfirmPass" CssClass="form-control textBoxBorderRadius" runat="server" TextMode="Password" />
                                                         </div>
                                                     </asp:TableCell>
                                                 </asp:TableRow>

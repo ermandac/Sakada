@@ -26,6 +26,8 @@
                     </asp:TableCell>
                     <asp:TableCell HorizontalAlign="Right">
                         <asp:Label ID="lblUserLogin" runat="server" Text="0" ForeColor="White" />
+                        &nbsp;
+                        <asp:LinkButton ID="btnLogout" runat="server" Visible="true"><i class="fa fa-sign-out-alt"></i></asp:LinkButton>
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
