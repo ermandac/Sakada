@@ -41,7 +41,7 @@ Public Class Employee
 
     Private Sub LoadEmpMain()
         Dim obj As New clsConnectEmp
-        Dim lData = obj.GetEmpDB()
+        Dim lData = obj.GetEmpDB(txtSearch.Text)
         gvEmpMain.DataSource = lData
         gvEmpMain.DataBind()
 
@@ -214,14 +214,14 @@ Public Class Employee
 
     Private Sub gvEmpMain_RowDataBound(sender As Object, e As GridViewRowEventArgs) Handles gvEmpMain.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
-            e.Row.Cells(0).Visible = False
+            e.Row.Cells(0).Visible = True
             e.Row.Cells(2).Visible = False
             e.Row.Cells(3).Visible = False
             e.Row.Cells(4).Visible = False
         End If
 
         If e.Row.RowType = DataControlRowType.Header Then
-            e.Row.Cells(0).Visible = False
+            e.Row.Cells(0).Visible = True
             e.Row.Cells(2).Visible = False
             e.Row.Cells(3).Visible = False
             e.Row.Cells(4).Visible = False
@@ -230,5 +230,9 @@ Public Class Employee
             e.Row.Attributes("onclick") = Me.Page.ClientScript.GetPostBackClientHyperlink(gvEmpMain, "Select$" & e.Row.RowIndex)
             e.Row.ToolTip = "Click to select this row."
         End If
+    End Sub
+
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        LoadEmpMain()
     End Sub
 End Class

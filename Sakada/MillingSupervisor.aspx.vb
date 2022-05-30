@@ -15,9 +15,13 @@
 
     Private Sub LoadSupMain()
         Dim obj As New clsConnectSup
-        Dim lData = obj.GetSupDB()
+        Dim lData = obj.GetSupDB(txtSearch.Text)
         gvSupMain.DataSource = lData
         gvSupMain.DataBind()
+    End Sub
+
+    Private Sub btnSearch_Click(sender As Object, e As Object) Handles btnSearch.Click
+        LoadSupMain()
     End Sub
 
     Private Sub DefaultSettings()

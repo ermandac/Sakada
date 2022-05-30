@@ -116,11 +116,11 @@
         End Set
     End Property
 
-    Public Function GetEmpDB() As List(Of clsConnectEmp)
+    Public Function GetEmpDB(Search As String) As List(Of clsConnectEmp)
         Dim sQuery As New StringBuilder
 
         sQuery.Append("SELECT empID,empFirstName,empMiddleName,empLastName,empAddress,empMobileNo,empEmailAddress,empBirthday,empAge,CONCAT(B.supFirstName,' ',B.supMiddleName,' ',B.supLastName) AS empSupervisor,A.isDeleted FROM tblEmployee A ")
-        sQuery.Append("INNER JOIN tblSupervisor B ON A.empSupervisor = B.ID WHERE A.isDeleted <> 1")
+        sQuery.Append("INNER JOIN tblSupervisor B ON A.empSupervisor = B.ID WHERE A.isDeleted <> 1 AND A.empID LIKE '%" + Search + "%'")
 
         Dim lData As New List(Of clsConnectEmp)
 
@@ -130,9 +130,9 @@
             While oReader.Read()
                 Dim obj As New clsConnectEmp
                 obj.EmpID = HttpContext.Current.Server.HtmlEncode(oReader("empID").ToString()).Replace("&#160;", "")
-                obj.FirstName = HttpContext.Current.Server.HtmlEncode(oReader("empFirstName").ToString()).Replace("&#160;", "")
-                obj.MiddleName = HttpContext.Current.Server.HtmlEncode(oReader("empMiddleName").ToString()).Replace("&#160;", "")
-                obj.LastName = HttpContext.Current.Server.HtmlEncode(oReader("empLastName").ToString()).Replace("&#160;", "")
+                obj.FirstName = HttpContext.Current.Server.HtmlEncode(oReader("empFirstName").ToString()).Replace("&#160;", "").Replace("&#241;", "ñ").Replace("&#209;", "Ñ")
+                obj.MiddleName = HttpContext.Current.Server.HtmlEncode(oReader("empMiddleName").ToString()).Replace("&#160;", "").Replace("&#241;", "ñ").Replace("&#209;", "Ñ")
+                obj.LastName = HttpContext.Current.Server.HtmlEncode(oReader("empLastName").ToString()).Replace("&#160;", "").Replace("&#241;", "ñ").Replace("&#209;", "Ñ")
                 obj.FullName = obj.FirstName + " " + obj.MiddleName + " " + obj.LastName
                 obj.Address = HttpContext.Current.Server.HtmlEncode(oReader("empAddress").ToString()).Replace("&#160;", "")
                 obj.MobileNo = HttpContext.Current.Server.HtmlEncode(oReader("empMobileNo").ToString()).Replace("&#160;", "")

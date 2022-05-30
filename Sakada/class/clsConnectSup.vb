@@ -96,10 +96,10 @@
         End Set
     End Property
 
-    Public Function GetSupDB() As List(Of clsConnectSup)
+    Public Function GetSupDB(Search As String) As List(Of clsConnectSup)
         Dim sQuery As New StringBuilder
 
-        sQuery.Append("SELECT * FROM tblSupervisor WHERE supID LIKE '%%' AND isDeleted <> 1")
+        sQuery.Append("SELECT * FROM tblSupervisor WHERE isDeleted <> 1 AND supID LIKE '%" + Search + "%'")
 
         Dim lData As New List(Of clsConnectSup)
 
@@ -109,9 +109,9 @@
             While oReader.Read()
                 Dim obj As New clsConnectSup
                 obj.SupID = HttpContext.Current.Server.HtmlEncode(oReader("supID").ToString()).Replace("&#160;", "")
-                obj.FirstName = HttpContext.Current.Server.HtmlEncode(oReader("supFirstName").ToString()).Replace("&#160;", "")
-                obj.MiddleName = HttpContext.Current.Server.HtmlEncode(oReader("supMiddleName").ToString()).Replace("&#160;", "")
-                obj.LastName = HttpContext.Current.Server.HtmlEncode(oReader("supLastName").ToString()).Replace("&#160;", "")
+                obj.FirstName = HttpContext.Current.Server.HtmlEncode(oReader("supFirstName").ToString()).Replace("&#160;", "").Replace("&#241;", "ñ").Replace("&#209;", "Ñ")
+                obj.MiddleName = HttpContext.Current.Server.HtmlEncode(oReader("supMiddleName").ToString()).Replace("&#160;", "").Replace("&#241;", "ñ").Replace("&#209;", "Ñ")
+                obj.LastName = HttpContext.Current.Server.HtmlEncode(oReader("supLastName").ToString()).Replace("&#160;", "").Replace("&#241;", "ñ").Replace("&#209;", "Ñ")
                 obj.SupName = obj.FirstName + " " + obj.MiddleName + " " + obj.LastName
                 obj.SupAddress = HttpContext.Current.Server.HtmlEncode(oReader("supAddress").ToString()).Replace("&#160;", "")
                 obj.SupMobileNo = HttpContext.Current.Server.HtmlEncode(oReader("supMobileNo").ToString()).Replace("&#160;", "")

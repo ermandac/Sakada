@@ -69,13 +69,13 @@
         End Set
     End Property
 
-    Public Function GetCADB() As List(Of clsConnectCA)
+    Public Function GetCADB(Search As String) As List(Of clsConnectCA)
         Dim sQuery As New StringBuilder
 
         sQuery.Append("SELECT caID, CONCAT(B.supFirstName,' ',B.supMiddleName,' ',B.supLastName) AS caSupervisor, ")
         sQuery.Append("CONCAT(C.empFirstName,' ',C.empMiddleName,' ',C.empLastName) AS caEmployee, caDate, caStatus, caAmount, A.empID ")
         sQuery.Append("FROM tblCashAdvance A INNER JOIN tblSupervisor B ON A.caSupervisor = B.ID ")
-        sQuery.Append("INNER JOIN tblEmployee C ON A.caEmployee = C.ID WHERE A.isDeleted <> 1")
+        sQuery.Append("INNER JOIN tblEmployee C ON A.caEmployee = C.ID WHERE A.isDeleted <> 1 AND caID LIKE '%" + Search + "%'")
         Dim lData As New List(Of clsConnectCA)
         Try
             Dim oReader = SakadaExecReader(sQuery.ToString())
@@ -83,8 +83,8 @@
             While oReader.Read()
                 Dim obj As New clsConnectCA
                 obj.CAID = HttpContext.Current.Server.HtmlEncode(oReader("caID").ToString()).Replace("&#160;", "")
-                obj.CASupervisor = HttpContext.Current.Server.HtmlEncode(oReader("caSupervisor").ToString()).Replace("&#160;", "")
-                obj.CAEmployee = HttpContext.Current.Server.HtmlEncode(oReader("caEmployee").ToString()).Replace("&#160;", "")
+                obj.CASupervisor = HttpContext.Current.Server.HtmlEncode(oReader("caSupervisor").ToString()).Replace("&#160;", "").Replace("&#241;", "ñ").Replace("&#209;", "Ñ")
+                obj.CAEmployee = HttpContext.Current.Server.HtmlEncode(oReader("caEmployee").ToString()).Replace("&#160;", "").Replace("&#241;", "ñ").Replace("&#209;", "Ñ")
                 obj.CAStatus = HttpContext.Current.Server.HtmlEncode(oReader("caStatus").ToString()).Replace("&#160;", "")
                 obj.CADate = HttpContext.Current.Server.HtmlEncode(oReader("caDate").ToString()).Replace("&#160;", "")
                 Dim Amount = HttpContext.Current.Server.HtmlEncode(oReader("caAmount").ToString()).Replace("&#160;", "")

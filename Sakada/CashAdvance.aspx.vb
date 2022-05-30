@@ -17,9 +17,13 @@
 
     Private Sub LoadCAMain()
         Dim obj As New clsConnectCA
-        Dim lData = obj.GetCADB()
+        Dim lData = obj.GetCADB(txtSearch.Text)
         gvCAMain.DataSource = lData
         gvCAMain.DataBind()
+    End Sub
+
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        LoadCAMain()
     End Sub
 
     Private Sub DefaultSettings()
