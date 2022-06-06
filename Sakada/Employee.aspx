@@ -56,6 +56,7 @@
                 </asp:UpdateProgress>--%>
             <asp:Button runat="server" Text="Load" ID="btnLoad" style="display:none" ClientIDMode="Static" OnClick="btnLoad_Click"/>
             <asp:Label ID="lblEmployeeID" runat="server" Text="0" style="display:none;" />
+            <asp:Label ID="lblID" runat="server" Text="0" style="display:none;" />
             <asp:Label ID="lblSavingControl" runat="server" Text="0" style="display:none;" />
             <div class="panel panel-default card" style="border-radius: 0px; background-color: white; margin-top:15px;">
                 <div>
@@ -124,6 +125,7 @@
                                 <%--8--%><asp:BoundField DataField="EmailAdd" HeaderText="Email Address" />
                                 <%--9--%><asp:BoundField DataField="MobileNo" HeaderText="Mobile No" />
                                 <%--10--%><asp:BoundField DataField="Supervisor" HeaderText="Supervisor" />
+                                <%--11--%><asp:BoundField DataField="ID" HeaderText="ID" />
                             </Columns>
 
                             <HeaderStyle BorderColor="#0099FF" BorderStyle="None" />

@@ -5,14 +5,14 @@
         If Not Page.IsPostBack Then
             Dim script As String = "$(document).ready(function(){$('#btnLoad').click();});"
             ClientScript.RegisterStartupScript(Me.GetType, "load", script, True)
+            LoadCAMain()
         End If
     End Sub
 
     Protected Sub btnLoad_Click(sender As Object, e As EventArgs)
-        LoadCAMain()
         DefaultSettings()
-        LoadSupervisor()
         LoadInitialEmp()
+        LoadSupervisor()
     End Sub
 
     Private Sub LoadCAMain()
@@ -149,8 +149,8 @@
         If ddSupervisor.SelectedItem.Text = "--Select a Supervisor--" Then
             LoadInitialEmp()
         End If
-
         pnlUpdateEmp.Update()
+        pnlUpdateSup.Update()
     End Sub
 
     Private Sub LoadInitialEmp()
@@ -163,11 +163,9 @@
     End Sub
 
     Private Sub gvCAMain_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvCAMain.SelectedIndexChanged
+        lblSavingControl.Text = 2
         Try
             SetReadOnlyFields()
-            LoadEmployee()
-            LoadSupervisor()
-            lblSavingControl.Text = 2
             txtSearch.Visible = False
             btnSearch.Visible = False
             tblSearch.Visible = False
@@ -186,7 +184,9 @@
             dvMain.Visible = False
             dvNewCA.Visible = True
             lblCashAdvanceID.Text = Server.HtmlDecode(gvCAMain.SelectedRow.Cells(0).Text.Replace("&nbsp;", ""))
+            LoadEmployee()
             ddEmployee.SelectedItem.Text = Server.HtmlDecode(gvCAMain.SelectedRow.Cells(1).Text.Replace("&nbsp;", ""))
+            LoadSupervisor()
             ddSupervisor.SelectedItem.Text = Server.HtmlDecode(gvCAMain.SelectedRow.Cells(2).Text.Replace("&nbsp;", ""))
             txtStatus.Text = Server.HtmlDecode(gvCAMain.SelectedRow.Cells(3).Text.Replace("&nbsp;", ""))
             txtCADate.Text = Server.HtmlDecode(gvCAMain.SelectedRow.Cells(4).Text.Replace("&nbsp;", ""))
@@ -207,6 +207,8 @@
 
         ddSupervisor.Items.Insert(0, "--Select--")
         ddSupervisor.Items(0).Value = 0
+
+
     End Sub
 
     Private Sub ClearFields()

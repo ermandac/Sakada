@@ -103,7 +103,7 @@
         Dim sQuery As New StringBuilder
 
         sQuery.Append("SELECT CONCAT(B.supFirstName,' ',B.supMiddleName,' ',B.supLastName) AS caSupervisor,caStatus,caDate,caAmount FROM tblCashAdvance A ")
-        sQuery.Append("INNER JOIN tblSupervisor B ON A.caSupervisor = B.ID INNER JOIN tblEmployee C ON A.caEmployee = B.ID WHERE A.isDeleted <> 1 AND C.empID = '" + EmpID + "'")
+        sQuery.Append("INNER JOIN tblSupervisor B ON A.caSupervisor = B.ID INNER JOIN tblEmployee C ON A.caEmployee = B.ID WHERE A.isDeleted <> 1 AND A.empID = '" + EmpID + "'")
 
         Dim lData As New List(Of clsConnectCA)
         Try

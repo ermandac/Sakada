@@ -203,6 +203,15 @@ Partial Public Class CashAdvance
     Protected WithEvents dvCAContent As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
+    '''pnlUpdateSup control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlUpdateSup As Global.System.Web.UI.UpdatePanel
+    
+    '''<summary>
     '''ddSupervisor control.
     '''</summary>
     '''<remarks>

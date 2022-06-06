@@ -139,13 +139,17 @@
                                             <asp:Table runat="server" CellPadding="0" CellSpacing="0" Width="100%">
                                                 <asp:TableRow>
                                                     <asp:TableCell CssClass="paddingRow" Width="50%" RowSpan="2">
-                                                            <div>
-                                                                <label class="labelStyle">Milling Supervisor&nbsp;</label>
-                                                            </div>
-                                                            <div>
-                                                                <asp:DropDownList BackColor="White" ID="ddSupervisor" Width="100%" CssClass="form-control textBoxBorderRadius" runat="server" AutoPostBack="true">
-                                                                </asp:DropDownList>
-                                                            </div>
+                                                        <asp:UpdatePanel runat="server" ID="pnlUpdateSup" UpdateMode="Conditional">
+                                                            <ContentTemplate>
+                                                                <div>
+                                                                    <label class="labelStyle">Milling Supervisor&nbsp;</label>
+                                                                </div>
+                                                                <div>
+                                                                    <asp:DropDownList BackColor="White" ID="ddSupervisor" Width="100%" CssClass="form-control textBoxBorderRadius" runat="server" AutoPostBack="true">
+                                                                    </asp:DropDownList>
+                                                                </div>
+                                                            </ContentTemplate>
+                                                        </asp:UpdatePanel>
                                                     </asp:TableCell>
                                                 </asp:TableRow>
                                                 <asp:TableRow>

@@ -50,6 +50,15 @@ Partial Public Class Employee
     Protected WithEvents lblEmployeeID As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
+    '''lblID control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblID As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''lblSavingControl control.
     '''</summary>
     '''<remarks>

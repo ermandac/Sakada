@@ -49,7 +49,7 @@ Public Class Employee
 
     Private Sub LoadCAHistory()
         Dim obj As New clsConnectCA
-        Dim lData = obj.GetCAHistory(lblEmployeeID.Text)
+        Dim lData = obj.GetCAHistory(lblID.Text)
         gvCAHistory.DataSource = lData
         gvCAHistory.DataBind()
     End Sub
@@ -151,6 +151,7 @@ Public Class Employee
             dvNewEmployee.Visible = True
             dvCashAdvanceHistory.Visible = True
             lblEmployeeID.Text = Server.HtmlDecode(gvEmpMain.SelectedRow.Cells(0).Text.Replace("&nbsp;", ""))
+            lblID.Text = Server.HtmlDecode(gvEmpMain.SelectedRow.Cells(11).Text.Replace("&nbsp;", ""))
             LoadCAHistory()
             'txtFullName.Text = Server.HtmlDecode(gvEmpMain.SelectedRow.Cells(1).Text).ToString()
             txtFirstName.Text = Server.HtmlDecode(gvEmpMain.SelectedRow.Cells(2).Text).ToString()
@@ -218,6 +219,7 @@ Public Class Employee
             e.Row.Cells(2).Visible = False
             e.Row.Cells(3).Visible = False
             e.Row.Cells(4).Visible = False
+            e.Row.Cells(11).Visible = False
         End If
 
         If e.Row.RowType = DataControlRowType.Header Then
@@ -225,6 +227,7 @@ Public Class Employee
             e.Row.Cells(2).Visible = False
             e.Row.Cells(3).Visible = False
             e.Row.Cells(4).Visible = False
+            e.Row.Cells(11).Visible = False
         End If
         If e.Row.RowType = DataControlRowType.DataRow Then
             e.Row.Attributes("onclick") = Me.Page.ClientScript.GetPostBackClientHyperlink(gvEmpMain, "Select$" & e.Row.RowIndex)
