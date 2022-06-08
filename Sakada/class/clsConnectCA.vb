@@ -229,4 +229,18 @@
         End Try
         Return boolReturnVal
     End Function
+    Public Function GetEmployeeNumber(empID As String)
+        Dim sQuery As New StringBuilder
+        sQuery.Append("SELECT empMobileNo FROM tblEmployee WHERE ID = '" + empID + "'")
+        Dim valMobileNo = String.Empty
+        Try
+            Dim oReader = SakadaExecReader(sQuery.ToString())
+            While oReader.Read()
+                valMobileNo = oReader("empMobileNo").ToString()
+            End While
+        Catch ex As Exception
+            System.Diagnostics.Trace.WriteLine(ex.Message & " -GetEmployeeNumber")
+        End Try
+        Return valMobileNo
+    End Function
 End Class

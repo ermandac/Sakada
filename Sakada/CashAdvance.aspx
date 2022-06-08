@@ -145,7 +145,7 @@
                                                                     <label class="labelStyle">Milling Supervisor&nbsp;</label>
                                                                 </div>
                                                                 <div>
-                                                                    <asp:DropDownList BackColor="White" ID="ddSupervisor" Width="100%" CssClass="form-control textBoxBorderRadius" runat="server" AutoPostBack="true">
+                                                                    <asp:DropDownList BackColor="White" ID="ddSupervisor" Width="100%" CssClass="form-control textBoxBorderRadius" runat="server" AutoPostBack="true" EnableViewState="true">
                                                                     </asp:DropDownList>
                                                                 </div>
                                                             </ContentTemplate>

@@ -80,7 +80,11 @@
             obj.CAEmpID = ddEmployee.SelectedValue
             Dim oCADetails As New clsConnectCA
             If lblSavingControl.Text = 1 Then
-                oCADetails.SaveCADetails(obj)
+                'oCADetails.SaveCADetails(obj)
+                Dim empMobileNo = oCADetails.GetEmployeeNumber(ddEmployee.SelectedValue)
+                Dim formattedMobileNo = "+63" + empMobileNo
+                Dim smsBody As String = "A cash advance was requested by: *insert name here* who is under Mr. *insert name here* with a value of " + txtAmount.Text + "."
+                Call mdlSMS.SendSMS(smsBody, formattedMobileNo)
             ElseIf lblSavingControl.Text = 2 Then
                 oCADetails.UpdateCADetails(lblCashAdvanceID.Text, obj)
             End If

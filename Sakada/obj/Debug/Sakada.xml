@@ -316,6 +316,15 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:Sakada.Employee._lblID">
+<summary>
+lblID control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:Sakada.Employee._lblSavingControl">
 <summary>
 lblSavingControl control.
@@ -778,6 +787,15 @@ To modify move field declaration from designer file to code-behind file.
 <member name="F:Sakada.CashAdvance._dvCAContent">
 <summary>
 dvCAContent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Sakada.CashAdvance._pnlUpdateSup">
+<summary>
+pnlUpdateSup control.
 </summary>
 <remarks>
 Auto-generated field.

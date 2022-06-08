@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site1.Master" CodeBehind="Employee.aspx.vb" Inherits="Sakada.Employee" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/w3.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <script src="js/jquery.min.js"></script>
     <link href="datepicker/datepicker1.css" rel="stylesheet" />
@@ -222,8 +223,13 @@
                                                         <div>
                                                             <label class="labelStyle">Mobile No.&nbsp;</label>
                                                         </div>
-                                                        <div>
-                                                            <asp:TextBox BackColor="White" Width="100%" ID="txtMobileNo" CssClass="form-control textBoxBorderRadius" runat="server" />
+                                                        <div class="col-md-12">
+                                                            <div class="input-group">
+                                                                <div class="input-group-addon">
+                                                                    <span>+63</span>
+                                                                </div>
+                                                               <asp:TextBox runat="server" ID="txtMobileNo" MaxLength="10" CssClass="form-control default-width" />
+                                                            </div>
                                                         </div>
                                                     </asp:TableCell>
                                                     <asp:TableCell CssClass="paddingRow" Width="40%" RowSpan="3">
@@ -231,6 +237,7 @@
                                                             <label class="labelStyle">Email Address&nbsp;</label>
                                                         </div>
                                                         <div>
+                                                            
                                                             <asp:TextBox BackColor="White" Width="100%" ID="txtEmailAdd" CssClass="form-control textBoxBorderRadius" runat="server" />
                                                         </div>
                                                     </asp:TableCell>

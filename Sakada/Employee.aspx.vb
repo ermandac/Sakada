@@ -78,6 +78,7 @@ Public Class Employee
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         DefaultSettings()
+        SetEnableFields()
         LoadEmpMain()
     End Sub
 
