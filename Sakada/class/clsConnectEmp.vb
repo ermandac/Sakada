@@ -140,7 +140,7 @@
                 obj.EmailAdd = HttpContext.Current.Server.HtmlEncode(oReader("empEmailAddress").ToString()).Replace("&#160;", "")
                 obj.BirthDate = HttpContext.Current.Server.HtmlEncode(oReader("empBirthday").ToString()).Replace("&#160;", "")
                 obj.Age = HttpContext.Current.Server.HtmlEncode(oReader("empAge").ToString()).Replace("&#160;", "")
-                obj.Supervisor = HttpContext.Current.Server.HtmlEncode(oReader("empSupervisor").ToString()).Replace("&#160;", "")
+                obj.Supervisor = HttpContext.Current.Server.HtmlEncode(oReader("empSupervisor").ToString()).Replace("&#160;", "").Replace("&#241;", "ñ").Replace("&#209;", "Ñ")
                 lData.Add(obj)
             End While
         Catch ex As Exception
