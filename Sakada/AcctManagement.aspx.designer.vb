@@ -41,13 +41,22 @@ Partial Public Class AcctManagement
     Protected WithEvents btnLoad As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''lblEmployeeID control.
+    '''lblAccessID control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lblEmployeeID As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblAccessID As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lblReference control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblReference As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''lblSavingControl control.
@@ -167,13 +176,13 @@ Partial Public Class AcctManagement
     Protected WithEvents gvAcctMain As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
-    '''dvNewCA control.
+    '''dvNewLogin control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents dvNewCA As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents dvNewLogin As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
     '''dvCAContent control.

@@ -127,3 +127,12 @@ C:\Users\edwardrm\Desktop\WSI Projects (DevOps)\Sakada\Sakada\obj\Release\Sakada
 C:\Users\edwardrm\Desktop\WSI Projects (DevOps)\Sakada\Sakada\obj\Release\Sakada.dll
 C:\Users\edwardrm\Desktop\WSI Projects (DevOps)\Sakada\Sakada\obj\Release\Sakada.xml
 C:\Users\edwardrm\Desktop\WSI Projects (DevOps)\Sakada\Sakada\obj\Release\Sakada.pdb
+D:\Edward Mandac\Desktop\Visual Studio Projects\Sakada\Sakada\bin\Microsoft.IdentityModel.Logging.dll
+D:\Edward Mandac\Desktop\Visual Studio Projects\Sakada\Sakada\bin\Microsoft.IdentityModel.Tokens.dll
+D:\Edward Mandac\Desktop\Visual Studio Projects\Sakada\Sakada\bin\Newtonsoft.Json.dll
+D:\Edward Mandac\Desktop\Visual Studio Projects\Sakada\Sakada\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\Edward Mandac\Desktop\Visual Studio Projects\Sakada\Sakada\bin\Twilio.dll
+D:\Edward Mandac\Desktop\Visual Studio Projects\Sakada\Sakada\bin\Microsoft.IdentityModel.Tokens.xml
+D:\Edward Mandac\Desktop\Visual Studio Projects\Sakada\Sakada\bin\Newtonsoft.Json.xml
+D:\Edward Mandac\Desktop\Visual Studio Projects\Sakada\Sakada\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\Edward Mandac\Desktop\Visual Studio Projects\Sakada\Sakada\bin\Twilio.xml

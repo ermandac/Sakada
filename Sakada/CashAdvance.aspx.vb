@@ -80,10 +80,10 @@
             obj.CAEmpID = ddEmployee.SelectedValue
             Dim oCADetails As New clsConnectCA
             If lblSavingControl.Text = 1 Then
-                'oCADetails.SaveCADetails(obj)
+                oCADetails.SaveCADetails(obj)
                 Dim empMobileNo = oCADetails.GetEmployeeNumber(ddEmployee.SelectedValue)
                 Dim formattedMobileNo = "+63" + empMobileNo
-                Dim smsBody As String = "A cash advance was requested by: *insert name here* who is under Mr. *insert name here* with a value of " + txtAmount.Text + "."
+                Dim smsBody As String = "A cash advance was requested by: " + ddEmployee.SelectedItem.Text + " who is under " + ddSupervisor.SelectedItem.Text + " with a value of " + txtAmount.Text + "."
                 Call mdlSMS.SendSMS(smsBody, formattedMobileNo)
             ElseIf lblSavingControl.Text = 2 Then
                 oCADetails.UpdateCADetails(lblCashAdvanceID.Text, obj)
@@ -197,7 +197,7 @@
             txtReadBirthDate.Text = Server.HtmlDecode(gvCAMain.SelectedRow.Cells(4).Text.Replace("&nbsp;", ""))
             txtAmount.Text = Server.HtmlDecode(gvCAMain.SelectedRow.Cells(5).Text.Replace("&nbsp;", ""))
         Catch ex As Exception
-            System.Diagnostics.Trace.WriteLine(ex.Message & " -gvClick")
+            System.Diagnostics.Trace.WriteLine(ex.Message & "-gvClick")
         End Try
     End Sub
 
@@ -211,8 +211,6 @@
 
         ddSupervisor.Items.Insert(0, "--Select--")
         ddSupervisor.Items(0).Value = 0
-
-
     End Sub
 
     Private Sub ClearFields()

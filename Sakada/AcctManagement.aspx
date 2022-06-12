@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site1.Master" CodeBehind="AcctManagement.aspx.vb" Inherits="Sakada.AcctManagement" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site1.Master" CodeBehind="AcctManagement.aspx.vb" Inherits="Sakada.AcctManagement" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/w3.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -45,7 +45,8 @@
          <ContentTemplate>
              <asp:ScriptManager runat="server" ID="ScriptManager1"></asp:ScriptManager>
              <asp:Button runat="server" Text="Load" ID="btnLoad" style="display:none" ClientIDMode="Static" OnClick="btnLoad_Click"/>
-             <asp:Label ID="lblEmployeeID" runat="server" Text="0" style="display:none;" />
+             <asp:Label ID="lblAccessID" runat="server" Text="0" style="display:none;" />
+             <asp:Label ID="lblReference" runat="server" Text="0" style="display:none;" />
              <asp:Label ID="lblSavingControl" runat="server" Text="0" style="display:none;" />
              <div class="panel panel-default card" style="border-radius: 0px; background-color: white; margin-top:15px;">
                 <div>
@@ -106,13 +107,15 @@
                                 <%--0--%><asp:BoundField DataField="LoginID" HeaderText="ID" />
                                 <%--1--%><asp:BoundField DataField="UserName" HeaderText="Name" />
                                 <%--2--%><asp:BoundField DataField="LoginName" HeaderText="Login Name" />
-                                <%--3--%><asp:BoundField DataField="AccessLevel" HeaderText="Access Level" />
+                                <%--3--%><asp:BoundField DataField="PassWord" HeaderText="PassWord" />
+                                <%--4--%><asp:BoundField DataField="AccessLevel" HeaderText="Access Level" />
+                                <%--5--%><asp:BoundField DataField="Reference" HeaderText="Reference" />
                             </Columns>
 
                             <HeaderStyle BorderColor="#0099FF" BorderStyle="None" />
                         </asp:GridView>
                     </div>
-                    <div id="dvNewCA" runat="server" visible="true">
+                    <div id="dvNewLogin" runat="server" visible="true">
                         <asp:Table runat="server" Width="100%" CellPadding="0" CellSpacing="0">
                             <asp:TableRow>
                                 <asp:TableCell Width="70%" CssClass="borderRightOfTable" VerticalAlign="Top">

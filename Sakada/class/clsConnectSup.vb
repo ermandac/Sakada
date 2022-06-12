@@ -211,6 +211,30 @@
         Return lData
     End Function
 
+    Public Function GetSupervisorWithSupID(SupID As String) As List(Of clsConnectSup)
+        Dim sQuery As New StringBuilder
+        sQuery.Append("SELECT supID,supFirstName,supMiddleName,supLastName FROM tblSupervisor WHERE isDeleted <> 1 AND supID = '" + SupID + "' ")
+        Dim lData As New List(Of clsConnectSup)
+
+        Try
+            Dim oReader = SakadaExecReader(sQuery.ToString())
+            While oReader.Read()
+                Dim obj As New clsConnectSup
+                obj.SupID = oReader("supID").ToString()
+                obj.FirstName = oReader("supFirstName").ToString()
+                obj.MiddleName = oReader("supMiddleName").ToString()
+                obj.LastName = oReader("supLastName").ToString()
+                obj.SupName = obj.FirstName + " " + obj.MiddleName + " " + obj.LastName
+                lData.Add(obj)
+            End While
+        Catch ex As Exception
+            System.Diagnostics.Trace.WriteLine(ex.Message & " -GetSupervisor")
+        Finally
+            SakadaCloseNewConnection()
+        End Try
+        Return lData
+    End Function
+
     Public Function DeleteSupRecord(SupID As String) As Boolean
         Dim sQuery As New StringBuilder
         sQuery.Append("UPDATE tblSupervisor SET isDeleted = 1 WHERE supID = '" + SupID + "'")

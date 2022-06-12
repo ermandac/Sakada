@@ -64,9 +64,18 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Sakada.AcctManagement._lblEmployeeID">
+<member name="F:Sakada.AcctManagement._lblAccessID">
 <summary>
-lblEmployeeID control.
+lblAccessID control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Sakada.AcctManagement._lblReference">
+<summary>
+lblReference control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -190,9 +199,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Sakada.AcctManagement._dvNewCA">
+<member name="F:Sakada.AcctManagement._dvNewLogin">
 <summary>
-dvNewCA control.
+dvNewLogin control.
 </summary>
 <remarks>
 Auto-generated field.
